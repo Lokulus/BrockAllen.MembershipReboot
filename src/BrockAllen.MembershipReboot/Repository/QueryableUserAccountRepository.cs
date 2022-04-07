@@ -238,8 +238,9 @@ namespace BrockAllen.MembershipReboot
                     Email = a.Email
                 };
 
-            totalCount = result.Count();
-            return result.Skip(skip).Take(count).ToArray();
+            var hydratedResult = result.ToArray();
+            totalCount = hydratedResult.Length;
+            return hydratedResult.Skip(skip).Take(count);
         }
 
         public System.Collections.Generic.IEnumerable<UserAccountQueryResult> Query(string tenant, string filter, int skip, int count, out int totalCount)
@@ -269,8 +270,9 @@ namespace BrockAllen.MembershipReboot
                     Email = a.Email
                 };
 
-            totalCount = result.Count();
-            return result.Skip(skip).Take(count).ToArray();
+            var hydratedResult = result.ToArray();
+            totalCount = hydratedResult.Length;
+            return hydratedResult.Skip(skip).Take(count);
         }
 
         public System.Collections.Generic.IEnumerable<UserAccountQueryResult> Query(Func<IQueryable<TAccount>, IQueryable<TAccount>> filter)
@@ -316,8 +318,9 @@ namespace BrockAllen.MembershipReboot
                     Email = a.Email
                 };
 
-            totalCount = result.Count();
-            return result.Skip(skip).Take(count).ToArray();
+            var hydratedResult = result.ToArray();
+            totalCount = hydratedResult.Length;
+            return hydratedResult.Skip(skip).Take(count);
         }
     }
 }
